@@ -1,3 +1,3 @@
 #!/bin/bash
-source ~/python/virtenv/venv/bin/activate
+~/python/virtenv/venv/bin/activate
 gunicorn kskgcomplain.wsgi 127.0.0.1:8071
