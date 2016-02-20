@@ -1,7 +1,7 @@
 decorator==4.0.4
 dj-database-url==0.4.0
 dj-static==0.0.6
-Django==1.9.2
+Django==1.8.2
 django-pagination==1.0.7
 gunicorn==19.4.5
 ipython==4.0.1
