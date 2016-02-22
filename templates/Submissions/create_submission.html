@@ -1,0 +1,21 @@
+{% load static from staticfiles %}
+<html>
+<head>
+    <title>匿名發文--紅樓康普爛</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/create_submission.css" %}">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="{% static "js/create_submission.js" %}"></script>
+</head>
+
+<center><img src="{% static "img/banner.jpg" %}"></img></center>
+
+<center><div class="submission_form_container">
+    <textarea id="editor" onchange="cont_change()"></textarea>
+    <form action="" style="display:none;" id="submission_form" method="POST">
+        {% csrf_token %}
+        {{ form }}
+    </form>
+    <div class="button" id="submit_button">Submit</div>
+</div></center>

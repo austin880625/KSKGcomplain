@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <div class="login_form">
+        {% if error_message != None %}
+        <div class="error_message">
+            {{ error_message }}
+        </div>
+        {% endif %}
+        <h2 class="page_title">Login</h2>
+        <form action="" method="post">
+            <label for="username">Username &nbsp;: </label>{% csrf_token %}
+            <input type="text" name="username" class="input" /><br/>
+            <label for="password">Password &nbsp;: </label>
+            <input type="password" name="password" class="input" /><br/>
+            <input type="submit" value="Login" id="login_button"/>
+        </form>
+    </div>
+</body>
+</html>

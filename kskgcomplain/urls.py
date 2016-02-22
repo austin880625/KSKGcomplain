@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from kskgcomplain.views import Login,Logout
+from Submissions.views import Create_Submission,Submit_Success
+from Manager.views import Manage_Main
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$',Create_Submission),
+    url(r'^submit_success/$',Submit_Success),
+    url(r'^manage/', Manage_Main),
+
+    url(r'^accounts/login/$',Login,name='login'),
+    url(r'^accounts/logout/$',Logout,name='logout'),
 ]
