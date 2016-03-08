@@ -72,3 +72,6 @@ input[type="checkbox"]:checked + label div{
 #delete_button{
     background-color: #EF8A8A;
 }
+#logout_button{
+    background-color: #7FA2EA;
+}
