@@ -1,3 +1,32 @@
-{% for submission in submissions %}
-{{ submission.context }}<br>
-{% endfor %}
+{% load static from staticfiles %}
+<html>
+<head>
+    <title>紅樓康普爛--Submissions</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static "css/submission_list.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="{% static "js/submission_list.js" %}"></script>
+</head>
+<body>
+    <div class="main_panel">
+        <ul>
+            <li id="publish_button">Publish</li>
+            <li id="delete_button">Delete</li>
+        </ul>
+    </div>
+    <div class="submission_container">
+        <form method="POST" action="{% url 'post_operation' %}" id="publish_form">
+            {% csrf_token %}
+            <input name="op_type" id="form_op_type" type="hidden">
+            {% for submission in submissions %}
+                <div class="submission_panel">
+                    <input id="cb_{{ submission.id }}" name="submissions" type="checkbox" value="{{ submission.id }}">
+                    <label for="cb_{{ submission.id }}"><div class="select_button">✓</div></label>
+                    <div class="edit_button">edit</div>
+                    <div class="submission_context_container">{{ submission.context }}</div>
+                </div>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>

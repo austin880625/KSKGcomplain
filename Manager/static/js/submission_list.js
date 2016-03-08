@@ -1,0 +1,10 @@
+$(document).ready(function(){
+    $("#publish_button").click(function(){
+        $("#form_op_type").val("publish");
+        $("#publish_form").submit();
+    });
+    $("#delete_button").click(function(){
+        $("#form_op_type").val("delete");
+        $("#publish_form").submit();
+    });
+})
