@@ -2,7 +2,7 @@ jQuery.noConflict();
 jQuery(document).ready(function(){
     jQuery("#submit_button").click(function(){
         var cont=jQuery("#editor").val();
-        if(cont.length<10)
+        if(cont.replace(/(\r\n|\n|\r)/gm,"").length<10)
         {
             jQuery("#submit_button").text("內文未滿十個字！");
         }
