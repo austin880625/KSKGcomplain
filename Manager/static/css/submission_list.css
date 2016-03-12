@@ -9,6 +9,10 @@ ul{
 li{
     cursor: pointer;
 }
+a{
+    text-decoration: none;
+    color: #000;
+}
 
 .main_panel{
     top: 0px;
@@ -60,6 +64,18 @@ input[type="checkbox"]:checked + label div{
     text-align: center;
     width: 40px;
     float: left;
+}
+.type_tag{
+    background-color: #00C;
+    color: #FFF;
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    width: 20px;
+    float: left;
+    border-radius: 5px;
 }
 .submission_context_container{
     margin-left: 10px;

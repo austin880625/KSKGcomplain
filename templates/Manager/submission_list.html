@@ -24,6 +24,7 @@
                     <input id="cb_{{ submission.id }}" name="submissions" type="checkbox" value="{{ submission.id }}">
                     <label for="cb_{{ submission.id }}"><div class="select_button">✓</div></label>
                     <div class="edit_button">edit</div>
+                    <div class="type_tag">{{ submission.submit_type }}</div>
                     <div class="submission_context_container">{{ submission.context }}</div>
                 </div>
             {% endfor %}

@@ -3,7 +3,6 @@
 <head>
     <title>匿名發文--紅樓康普爛</title>
     <link rel="stylesheet" type="text/css" href="{% static "css/create_submission.css" %}">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="{% static "js/create_submission.js" %}"></script>
@@ -12,10 +11,13 @@
 <center><img src="{% static "img/banner.jpg" %}"></img></center>
 
 <center><div class="submission_form_container">
-    <textarea id="editor" onchange="cont_change()"></textarea>
-    <form action="" style="display:none;" id="submission_form" method="POST">
+    <form action="" id="submission_form" method="POST">
         {% csrf_token %}
-        {{ form }}
+        <textarea name="submission_context" onchange="cont_change()" id="editor"></textarea>
+        <div id="submit_type_choice">
+            <input type="radio" id="stc_0" name="submission_type" value="0" checked=true><label for="stc_0"><div>康文</div></label>
+            <input type="radio" id="stc_1" name="submission_type" value="1"><label for="stc_1"><div>康文字圖</div></label>
+        </div>
     </form>
-    <div class="button" id="submit_button">Submit</div>
+    <div class="button" id="submit_button">Complain!</div>
 </div></center>
