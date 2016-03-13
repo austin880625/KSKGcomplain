@@ -25,7 +25,7 @@ SECRET_KEY = 'g+x1et$gxgmst6&gqtmpzndk$s!!9rmain8nm5gp2m!&74$1#^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['complain-kskg.rhcloud.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
