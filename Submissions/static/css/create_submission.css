@@ -2,7 +2,7 @@ body{
     margin: 0pc;
     background-color: #000;
     color: #FFF;
-    font-family: Arial;
+    font-family: sans-serif;
 }
 img
 {
@@ -22,7 +22,7 @@ ul{
 #editor{
     width: 100%;
     height: 400px;
-    font-size: 14px;
+    font-size: 18px;
     background-color: #333;
     color: #FFF;
     border-style:none;
@@ -31,6 +31,7 @@ ul{
     display: none;
 }
 #submit_type_choice input[type="radio"]+label div{
+    cursor: pointer;
     height: 55px;
     width: 100%;
     line-height: 55px;
@@ -40,7 +41,9 @@ ul{
     color: #777;
 }
 #submit_type_choice input[type="radio"]:checked+label div{
+    width: calc(100% - 4px);
     background-color: #FF8000;
+    border: 2px solid #FFB233;
     color: #FFF;
 }
 #submit_button{
@@ -51,8 +54,17 @@ ul{
     margin-top: 2px;
     margin-bottom: 2px;
     background-color: #FF2C33;
+    transition: background-color 0.5s,color 0.5s;
+}
+#submit_button:hover{
+    background-color: #FFF;
+    color: #FF2C33;
 }
 @media screen and (max-width: 960px) {
+    img{
+        width: 100%;
+        height: auto;
+    }
     .submission_form_container{
         width: 100%;
         height: 70%;

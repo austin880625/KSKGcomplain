@@ -13,7 +13,7 @@
 <center><div class="submission_form_container">
     <form action="" id="submission_form" method="POST">
         {% csrf_token %}
-        <textarea name="submission_context" onchange="cont_change()" id="editor"></textarea>
+        <textarea name="submission_context" onkeyup="cont_change()" id="editor" placeholder="每日看康版有益身體健康(?)"></textarea>
         <div id="submit_type_choice">
             <input type="radio" id="stc_0" name="submission_type" value="0" checked=true><label for="stc_0"><div>康文</div></label>
             <input type="radio" id="stc_1" name="submission_type" value="1"><label for="stc_1"><div>康文字圖</div></label>

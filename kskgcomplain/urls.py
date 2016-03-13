@@ -17,13 +17,15 @@ from django.conf.urls import url
 from django.contrib import admin
 from kskgcomplain.views import Login,Logout
 from Submissions.views import Create_Submission,Submit_Success
-from Manager.views import Manage_Main,Manage_Post_Operation
+from Manager.views import Manage_Main,Manage_Post_Operation,Fetch_Submission,Update_Submission
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',Create_Submission),
     url(r'^submit_success/$',Submit_Success),
     url(r'^manage/$', Manage_Main),
+    url(r'^manage/fetch_submission/$',Fetch_Submission),
+    url(r'^manage/update_submission/$',Update_Submission),
     url(r'^manage/post_operation$',Manage_Post_Operation,name="post_operation"),
 
     url(r'^accounts/login/$',Login,name='login'),

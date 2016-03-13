@@ -8,7 +8,6 @@ jQuery(document).ready(function(){
         }
         else
         {
-            jQuery("#id_submission_context").text(cont);
             jQuery("#submission_form").submit();
         }
     });
@@ -16,9 +15,12 @@ jQuery(document).ready(function(){
 
 function cont_change()
 {
-    var cont=document.getElementById("editor").value;
+    var cont=document.getElementById("editor").value.replace(/(\r\n|\n|\r)/gm,"");
     if(cont.length>=10)
     {
-        jQuery("#submit_button").text("Submit");
+        jQuery("#submit_button").text("Complain!");
+    }
+    else {
+        jQuery("#submit_button").text("內文未滿十個字！");
     }
 }

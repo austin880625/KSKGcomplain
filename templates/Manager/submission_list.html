@@ -23,11 +23,20 @@
                 <div class="submission_panel">
                     <input id="cb_{{ submission.id }}" name="submissions" type="checkbox" value="{{ submission.id }}">
                     <label for="cb_{{ submission.id }}"><div class="select_button">✓</div></label>
-                    <div class="edit_button">edit</div>
+                    <div class="edit_button" onclick="edit_submission({{ submission.id }})">edit</div>
                     <div class="type_tag">{{ submission.submit_type }}</div>
-                    <div class="submission_context_container">{{ submission.context }}</div>
+                    <div class="submission_context_container" id="sub_cont_{{submission.id}}">{{ submission.context|linebreaks }}</div>
                 </div>
             {% endfor %}
+        </form>
+    </div>
+    <div class="edit_window">
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="submission_id" id="edit_submission_id">
+            <textarea id="editor" name="submission_context"></textarea>
+            <div id="save_button">Save</div>
+            <div id="cancel_button">Cancel</div>
         </form>
     </div>
 </body>

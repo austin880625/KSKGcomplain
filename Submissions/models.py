@@ -1,7 +1,7 @@
 from django.db import models
 from Pages.models import Page
 import urllib
-
+from .special_character_table import TABLE
 # Create your models here.
 class Submission(models.Model):
     context=models.TextField(blank=False)
@@ -28,7 +28,8 @@ class Submission(models.Model):
         else:
             fb_api_url+="/photos"
             image_text=self.context+"\n\n"+manager
-            image_text=image_text.replace('Ω','&#937;')
+            for tup in TABLE:
+                image_text=image_text.replace(tup[0],tup[1])
             param=urllib.parse.urlencode({'text':image_text})
             image_url="http://texttoimage-kskg.rhcloud.com/?%s"%param
 
