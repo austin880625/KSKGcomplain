@@ -3,11 +3,13 @@ from django.forms import Form
 from django import forms
 from django.http import HttpResponseRedirect
 from .models import Submission
+from Pages.models import Page
 # Create your views here.
 
 def Create_Submission(request):
     if request.method=='GET':
-        return render(request,'Submissions/create_submission.html')
+        page=Page.objects.all()[0]
+        return render(request,'Submissions/create_submission.html',{'placehold':page.placehold})
     elif request.method=="POST":
         #create a new instance of Submission model and fill each field of the submission
         submission=Submission()
