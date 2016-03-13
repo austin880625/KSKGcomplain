@@ -30,7 +30,7 @@ class Submission(models.Model):
             image_text=self.context+"\n\n"+manager
             for tup in TABLE:
                 image_text=image_text.replace(tup[0],tup[1])
-            param=urllib.parse.urlencode({'text':image_text})
+            param=urllib.parse.urlencode({'text':image_text,'line_length':16})
             image_url="http://texttoimage-kskg.rhcloud.com/?%s"%param
 
             values={
