@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib import auth
 from Submissions.models import Submission
+import json
 # Create your views here.
 def Manage_Main(request):
     if not request.user.is_authenticated():
@@ -20,8 +21,12 @@ def Manage_Post_Operation(request):
     for sub_id in submissions:
         submission=Submission.objects.get(id=sub_id)
         if op_type == "publish":
-            submission.publish(request.user.profile.nickname)
-        submission.delete()
+            raw_publish_state=submission.publish(request.user.profile.nickname)
+            publish_state=json.loads(raw_publish_state.decode('utf-8'))
+            if publish_state.get('error')==None:
+                submission.delete()
+        else:
+            submission.delete()
     return HttpResponseRedirect('/manage')
 def Fetch_Submission(request):
     if not request.user.is_authenticated():

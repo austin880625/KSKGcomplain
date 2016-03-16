@@ -24,13 +24,15 @@ class Submission(models.Model):
             data=urllib.parse.urlencode(values)
             byte_data=data.encode('utf8')
             response=urllib.request.urlopen(fb_api_url,byte_data)
-            print(response)
+            return response.read()
         else:
             fb_api_url+="/photos"
-            image_text=self.context+"\n\n"+manager
+            image_text=self.context+"\n"
+            watermark=manager
             for tup in TABLE:
                 image_text=image_text.replace(tup[0],tup[1])
-            param=urllib.parse.urlencode({'text':image_text,'line_length':16})
+                watermark=watermark.replace(tup[0],tup[1])
+            param=urllib.parse.urlencode({'text':image_text,'line_length':16,'watermark':watermark})
             image_url="http://texttoimage-kskg.rhcloud.com/?%s"%param
 
             values={
@@ -41,6 +43,6 @@ class Submission(models.Model):
             data=urllib.parse.urlencode(values)
             byte_data=data.encode('utf8')
             response=urllib.request.urlopen(fb_api_url,byte_data)
-            print(response)
+            return response.read()
         page.post_count+=1
         page.save()
