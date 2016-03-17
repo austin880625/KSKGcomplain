@@ -12,6 +12,9 @@ class Submission(models.Model):
         fb_api_url="https://graph.facebook.com/"+page.page_id
         post_context="#"
         post_context+=page.prefix+str(page.post_count)
+        page.post_count=page.post_count+1
+        page.save()
+        response=None
         if self.submit_type==0:
             fb_api_url+="/feed"
             post_context+="\n\n"+self.context+"\n\n"
@@ -24,7 +27,6 @@ class Submission(models.Model):
             data=urllib.parse.urlencode(values)
             byte_data=data.encode('utf8')
             response=urllib.request.urlopen(fb_api_url,byte_data)
-            return response.read()
         else:
             fb_api_url+="/photos"
             image_text=self.context+"\n"
@@ -43,6 +45,4 @@ class Submission(models.Model):
             data=urllib.parse.urlencode(values)
             byte_data=data.encode('utf8')
             response=urllib.request.urlopen(fb_api_url,byte_data)
-            return response.read()
-        page.post_count+=1
-        page.save()
+        return response.read()
