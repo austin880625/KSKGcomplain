@@ -60,6 +60,24 @@ ul{
     background-color: #FFF;
     color: #FF2C33;
 }
+
+#animate_layer{
+    position: absolute;;
+    padding-top: 100px;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: calc(100% - 100px);
+    display: none;
+    z-index: -1;
+}
+
+.little_image{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
 @media screen and (max-width: 960px) {
     img{
         width: 100%;
