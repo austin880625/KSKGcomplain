@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.forms import Form
 from django import forms
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from .models import Submission
 from Pages.models import Page
 # Create your views here.
-
+def Create_Report(request,hashtag):
+    return HttpResponse("YEE")
 def Create_Submission(request):
     if request.method=='GET':
         page=Page.objects.all()[0]

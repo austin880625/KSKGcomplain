@@ -5,6 +5,7 @@ body{
 ul{
     padding: 0px;
     margin: 0px;
+    list-style: none;
 }
 li{
     cursor: pointer;
@@ -120,7 +121,13 @@ input[type="checkbox"]:checked + label div{
 }
 #delete_button{
     background-color: #EF8A8A;
+    float: right;
 }
 #logout_button{
     background-color: #7FA2EA;
+    float: right;
+}
+#reports_button{
+    background-color: #F5C641;
+    float: right;
 }

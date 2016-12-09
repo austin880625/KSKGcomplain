@@ -2,7 +2,27 @@ from django.db import models
 from Pages.models import Page
 import urllib
 from .special_character_table import TABLE
+
+def get_report_url(post_hashtag):
+    return "http://c8763.webutu.com?hashtag="+str(post_hashtag)
+
 # Create your models here.
+class Record(models.Model):
+    submit_type=models.IntegerField(default=0)
+    post_id=models.IntegerField(blank=False)
+    fb_post_id=models.TextField(blank=False)
+
+class Report(models.Model):
+    REPORTER_TYPE=(
+        ("S","Submitter"),
+        ("R","Related"),
+        ("F","Friend"),
+        ("O","Other")
+    )
+    reporter=models.CharField(max_length=10,choices=REPORTER_TYPE,default="S")
+    reason=models.TextField(blank=False)
+    post_hashtag=models.IntegerField(blank=False)
+    fb_post_id=models.TextField(blank=False)
 class Submission(models.Model):
     context=models.TextField(blank=False)
     submit_type=models.IntegerField(default=0)
@@ -12,6 +32,8 @@ class Submission(models.Model):
         fb_api_url="https://graph.facebook.com/"+page.page_id
         post_context="#"
         post_context+=page.prefix+str(page.post_count)
+#        post_context+="\n檢舉這篇文章："
+#        post_context+=get_report_url(page.post_count)
         page.post_count=page.post_count+1
         page.save()
         response=None

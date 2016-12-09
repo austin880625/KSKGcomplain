@@ -35,11 +35,12 @@ $(document).ready(function(){
         });
         xhttp.onreadystatechange = function() {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
-                document.getElementById("sub_cont_"+sub_id.toString()).innerHTML=xhttp.responseText.replace("\n","<br />");
+                document.getElementById("sub_cont_"+sub_id.toString()).innerHTML=xhttp.responseText.replace("\n","<br />").replace("\r\n","<br />");
             }
         };
         xhttp.open("GET","/manage/fetch_submission/?id="+sub_id.toString(),true);
         xhttp.send();
+        document.getElementById("editor").innerHTML="";
         $(".edit_window").hide();
     });
 });
