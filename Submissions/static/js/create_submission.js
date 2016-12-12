@@ -49,7 +49,7 @@ jQuery(document).ready(function(){
     console.log("%c%s",css,"你他康普爛的在看殺小？");
     css="background-color:#000; font-size: 48px; color: #000;";
     console.log("%c%s",css,"幹你連反白的都看(╯‵□′)╯︵┴─┴");
-    //start_animation();
+    start_animation();
 
     jQuery("#submit_button").click(function(){
         var cont=jQuery("#editor").val();
