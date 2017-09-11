@@ -16,13 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from kskgcomplain.views import Login,Logout
-from Submissions.views import Create_Submission,Submit_Success
+from Submissions.views import Create_Submission,Submit_Success,Ranklist,Update_Ranklist
 from Manager.views import Manage_Main,Manage_Post_Operation,Fetch_Submission,Update_Submission
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',Create_Submission),
     url(r'^submit_success/$',Submit_Success),
+    url(r'^ranklist/$',Ranklist,name="ranklist"),
+    url(r'^ranklist/update$',Update_Ranklist,name="update_ranklist"),
     url(r'^manage/$', Manage_Main),
     url(r'^manage/fetch_submission/$',Fetch_Submission),
     url(r'^manage/update_submission/$',Update_Submission),

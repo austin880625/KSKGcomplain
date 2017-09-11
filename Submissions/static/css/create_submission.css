@@ -13,6 +13,29 @@ ul{
     list-style-type: none;
 }
 
+.nav_bar{
+    max-width: 100%;
+}
+.nav_bar_item{
+    width: 33%;
+    float: left;
+    background-color: inherit;
+    background-color: #0066FF;
+    color: #FFF ;
+    cursor: pointer;
+    margin-left: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.nav_bar_item:hover{
+    background-color: #5F9BF5;
+    color: #FFF;
+}
+.nav_bar_active{
+    background-color: #5F9BF5;
+    color: #FFF;
+}
+
 .button{
     cursor: pointer;
 }
@@ -60,6 +83,17 @@ ul{
     background-color: #FFF;
     color: #FF2C33;
 }
+
+.single_post{
+    margin-top: 20px;
+}
+h3{
+    text-align: left;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
 @media screen and (max-width: 960px) {
     img{
         width: 100%;
