@@ -15,7 +15,7 @@ ranklist_type_name={
     'weekly':"本週排行",
     'monthly':"本月排行",
 }
-
+logger=logging.getLogger(__name__)
 def Create_Submission(request):
     if request.method=='GET':
         page=Page.objects.all()[0]
