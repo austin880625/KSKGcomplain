@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect,HttpResponse
 from .models import Submission
 from Pages.models import Page
 from operator import attrgetter
+import logging
 import urllib
 import json,time
 # Create your views here.
@@ -54,6 +55,7 @@ def Update_Ranklist(request):
         elif ranklist_type=='monthly':
             update_peroid=86400
             time_limit=86400*30
+        logger.error(data[ranklist_type]["last_update"])
         if int(data[ranklist_type]["last_update"])>int(time.time()-update_peroid):
             return HttpResponse(json.dumps(data[ranklist_type]["data"][:101]))
         else:
