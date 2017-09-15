@@ -42,7 +42,7 @@ def Update_Ranklist(request):
     if not (ranklist_type=='daily' or ranklist_type=='weekly' or ranklist_type=='monthly'):
         ranklist_type='daily'
     data=None
-    with open('ranklist.json','r') as data_file:
+    with open('data/ranklist.json','r') as data_file:
         data=json.load(data_file)
         update_peroid=0
         time_limit=0
@@ -85,7 +85,7 @@ def Update_Ranklist(request):
             data[ranklist_type]["data"].sort(key=lambda x:-x["likes"])
             data_file.close()
 
-    with open('ranklist.json','w') as data_file:
+    with open('data/ranklist.json','w') as data_file:
         json.dump(data,data_file)
         data_file.close()
         return HttpResponse(json.dumps(data[ranklist_type]["data"][:101]))
