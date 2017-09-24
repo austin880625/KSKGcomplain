@@ -67,6 +67,7 @@ def Update_Ranklist(request):
             try:
                 response=json.load(urllib.request.urlopen(fb_api_url))
             except:
+                logger.error(response)
                 return HttpResponse(json.dumps(data[ranklist_type]["data"][:101]))
             while True:
                 breaking=0
