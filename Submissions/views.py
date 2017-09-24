@@ -65,9 +65,9 @@ def Update_Ranklist(request):
             fb_api_url="https://graph.facebook.com/"+page.page_id+ \
                         "/posts?fields=likes.limit(1).summary(true),permalink_url,created_time&date_format=U&access_token="+page.access_token
             try:
-                response=json.load(urllib.request.urlopen(fb_api_url))
-            except:
-                logger.error(response)
+                response=json.loads(urllib.request.urlopen(fb_api_url).read().decode('utf-8'))
+            except urllib.error.HTTPError as e:
+                logger.error(e)
                 return HttpResponse(json.dumps(data[ranklist_type]["data"][:101]))
             while True:
                 breaking=0
@@ -80,7 +80,7 @@ def Update_Ranklist(request):
                     break
                 new_url=response["paging"]["next"]
                 try:
-                    response=json.load(urllib.request.urlopen(new_url))
+                    response=json.loads(urllib.request.urlopen(new_url).read().decode('utf-8'))
                 except urllib.error.HTTPError as e:
                     print(e)
             data[ranklist_type]["data"].sort(key=lambda x:-x["likes"])
