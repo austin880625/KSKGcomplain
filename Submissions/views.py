@@ -6,7 +6,7 @@ from .models import Submission
 from Pages.models import Page
 from operator import attrgetter
 import logging
-import urllib
+import urllib.error,urllib.request
 import json,time
 # Create your views here.
 
@@ -63,7 +63,7 @@ def Update_Ranklist(request):
             data[ranklist_type]["data"]=[];
             page=Page.objects.all()[0]
             fb_api_url="https://graph.facebook.com/"+page.page_id+ \
-                        "/posts?fields=likes.limit(1).summary(true),permalink_url,created_time&date_format=U&access_token="+page.access_token
+                        "/posts?fields=reactions.limit(1).summary(true),permalink_url,created_time&date_format=U&access_token="+page.access_token
             try:
                 response=json.loads(urllib.request.urlopen(fb_api_url).read().decode('utf-8'))
             except urllib.error.HTTPError as e:
@@ -75,7 +75,7 @@ def Update_Ranklist(request):
                     if post["created_time"]<time.time()-time_limit:
                         breaking=1
                         break
-                    data[ranklist_type]["data"].append({"permalink_url":post["permalink_url"],"likes":post["likes"]["summary"]["total_count"]})
+                    data[ranklist_type]["data"].append({"permalink_url":post["permalink_url"],"likes":post["reactions"]["summary"]["total_count"]})
                 if breaking==1:
                     break
                 new_url=response["paging"]["next"]
