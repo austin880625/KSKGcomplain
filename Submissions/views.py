@@ -59,16 +59,16 @@ def Update_Ranklist(request):
         if int(data[ranklist_type]["last_update"])>int(time.time()-update_peroid):
             return HttpResponse(json.dumps(data[ranklist_type]["data"][:101]))
         else:
-            data[ranklist_type]["last_update"]=int(time.time())
-            data[ranklist_type]["data"]=[];
             page=Page.objects.all()[0]
-            fb_api_url="https://graph.facebook.com/"+page.page_id+ \
+            fb_api_url="https://graph.facebook.com/v2.10/"+page.page_id+ \
                         "/posts?fields=reactions.limit(1).summary(true),permalink_url,created_time&date_format=U&access_token="+page.access_token
             try:
                 response=json.loads(urllib.request.urlopen(fb_api_url).read().decode('utf-8'))
             except urllib.error.HTTPError as e:
                 logger.error(e)
                 return HttpResponse(json.dumps(data[ranklist_type]["data"][:101]))
+            data[ranklist_type]["last_update"]=int(time.time())
+            data[ranklist_type]["data"]=[];
             while True:
                 breaking=0
                 for post in response["data"]:
