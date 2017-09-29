@@ -35,7 +35,7 @@ class Submission(models.Model):
                 image_text=image_text.replace(tup[0],tup[1])
                 watermark=watermark.replace(tup[0],tup[1])
             param=urllib.parse.urlencode({'text':image_text,'line_length':16,'watermark':watermark})
-            image_url="http://texttoimage-kskg.rhcloud.com/?%s"%param
+            image_url="http://complain-kskg.ddns.net/texttoimage/?%s"%param
 
             values={
                 'caption':post_context,
