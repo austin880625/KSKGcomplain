@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from kskgcomplain.views import Login,Logout
 
-from Submissions.views import Create_Submission,Submit_Success,Ranklist,Update_Ranklist
+from Submissions.views import Create_Submission,Submit_Success,Ranklist,Update_Ranklist,Create_Report
 from Manager.views import Manage_Main,Manage_Post_Operation,Fetch_Submission,Update_Submission
 
 urlpatterns = [

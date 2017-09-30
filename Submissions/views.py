@@ -9,6 +9,8 @@ import logging
 import urllib.error,urllib.request
 import json,time
 # Create your views here.
+def Create_Report(request,hashtag):
+    return HttpResponse("YEE")
 
 ranklist_type_name={
     'daily':"本日排行",
@@ -16,7 +18,6 @@ ranklist_type_name={
     'monthly':"本月排行",
 }
 logger=logging.getLogger(__name__)
-
 def Create_Submission(request):
     if request.method=='GET':
         page=Page.objects.all()[0]
