@@ -25,6 +25,8 @@ def Manage_Post_Operation(request):
             publish_state=json.loads(raw_publish_state.decode('utf-8'))
             if publish_state.get('error')==None:
                 submission.delete()
+            else:
+                print(raw_publish_state.decode('utf-8'))
         else:
             submission.delete()
     return HttpResponseRedirect('/manage')

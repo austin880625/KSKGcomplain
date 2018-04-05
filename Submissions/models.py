@@ -9,7 +9,7 @@ class Submission(models.Model):
     submit_time=models.DateTimeField(auto_now_add=True)
     def publish(self,manager):
         page=Page.objects.all()[0]
-        fb_api_url="https://graph.facebook.com/"+page.page_id
+        fb_api_url="https://graph.facebook.com/v2.12/"+page.page_id
         post_context="#"
         post_context+=page.prefix+str(page.post_count)
         page.post_count=page.post_count+1
